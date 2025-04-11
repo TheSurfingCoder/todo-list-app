@@ -3,12 +3,17 @@ body {
 }
 
 
-
+#taskForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+}
 main {
-    display: flex; 
+    display: flex; /* This is a comment in CSS */
     background-color: aliceblue;
     justify-content: center;
-    align-items: center;
+    
     
     
 }
@@ -20,10 +25,11 @@ main {
 }
 
 .todo-app {
-    align-items: center;
+    display: flex;
     border: 5px solid yellow;
     flex-direction: column;
     width: 400px;
+    align-items: center;
 
 }
 
@@ -38,3 +44,9 @@ main {
     border-width: 3px;
 }
 
+.task-form-label,
+#title-input,
+#date-input,
+#description-input {
+  display: block;
+}

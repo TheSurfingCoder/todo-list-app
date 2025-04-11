@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <meta charset="UTF-8"/>
+
+<head>
+    <meta charset="UTF-8" />
     <title>Repracticing Localstorage app</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="styles.css" />
 
 </head>
+
 <body>
     <main>
-        <div class="todo-app"> 
-                <div class="header">
-                    <h1>To Do App</h1>
+        <div class="todo-app">
+            <h1>To Do App</h1>
+            <btn id="add-button" class="btn" type="submit">button</btn>
+            <form id="taskForm">
+                <!-- going to break this form into three parts: 1) Header for the close button
+2) body for the actual inputs 3) just a generic footer-->
+
+                <!-- this is head of task form-->
+                <div id="task-form-header">
+                    <button id="close-task-form-btn" class="close-task-form-btn" type="button" aria-label="close">
+                        <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px"
+                            height="48px">
+                            <path fill="#F44336" d="M21.5 4.5H26.501V43.5H21.5z" transform="rotate(45.001 24 24)" />
+                            <path fill="#F44336" d="M21.5 4.5H26.5V43.501H21.5z" transform="rotate(135.008 24 24)" />
+                        </svg>
+                    </button>
                 </div>
-                <div class="body">
-                    
+                <!-- this is body of task form-->                
+                <div id="task-form-body">
+                    <label class="task-form-label" for="title-input">Title</label>
+                    <input required type="text" class="form-control" id="title-input" value="" />
+                    <label class="task-form-label" for="date-input">Date</label>
+                    <input type="date" class="form-control" id="date-input" value="" />
+                    <label class="task-form-label" for="description-input">Description</label>
+                    <textarea class="form-control" id="description-input" cols="30" rows="5"></textarea>
+
                 </div>
-                <div class="footer">
-                    <btn id="add-button"class="btn"type="submit">button</btn>
+                <!-- this is footer of task form--> 
+                <div id="task-form-footer">
+                    <h2>i'm the footer</h2>
                 </div>
+            </form>
+
+
         </div>
     </main>
     <script src="app.js"></script>
@@ -26,4 +52,3 @@
 
 
 </html>
-
