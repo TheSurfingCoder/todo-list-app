@@ -1,6 +1,6 @@
 const openTaskFormBtn = document.getElementById("open-button");
 const taskForm = document.getElementById("taskForm")
-const submitButton = document.getElementById("submitButton");
+const submitButton = document.getElementById("add-or-update-task-btn");
 const titleInput = document.getElementById("title-input");
 const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
@@ -17,12 +17,13 @@ openTaskFormBtn.addEventListener("click", () => {
 })
 
 const addOrUdpateTask = () => {
-    /*This function will first check if there's any value inside
-    the title input. if not it will alert. it then creates an object
-    filled with the all the input values and then saves it into an object
-     it will then insert the object into the array that contains
-     all the objects. Finally it inserts into localstorage and 
-     uses stringify to turn the entire object into a string
+    /*
+    1)This function will first check if there's any value inside
+    the title input. if not it will alert.
+    2) it then creates an object filled with the all the input values and then saves it into an object
+    3) it will then insert the object into the array that contains
+     all the objects. 
+     4) Finally it inserts into localstorage and uses stringify to turn the entire object into a string
      
      TL/DR: it creates an object with all input values and inserts into main
      array and sends to local storage*/
@@ -31,7 +32,14 @@ const addOrUdpateTask = () => {
         return;
     }
 
+
+    /*This part is very imporant. Essentially every time we click our submit button (for either submit or update)
+    this function will check if our taskData has a certain id in currentTask which is initialized as empty. Because it's empty upon
+    initialization it will return a -1, which allows us to unshift and to our taskData array. However,
+    in our edit function, we call for the id of task being edited save it into the currenTask object.
+    This way we will overwrite the exisiting values of that specific element in the array*/
     const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
+    //
     const taskObj = {
         id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
         title: titleInput.value,
@@ -57,9 +65,12 @@ taskForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
 
+
 })
 
 const updateTaskContainer = () => {
+
+    tasksContainer.innerHTML = "";
 
     taskData.forEach(({ id, title, date, description }) => {
         console.log(`We have ${taskData.length} amount of tasks`)
@@ -84,6 +95,7 @@ const reset = () => {
     descriptionInput.value = "";
     taskForm.classList.toggle("hidden");
     currentTask = {};
+    submitButton.innerText = "Add Task"
 }
 
 if (taskData.length) {
@@ -104,6 +116,10 @@ const deleteTask = (buttonEl) => {
 const editTask = (buttonEl) => {
     tasksContainer.classList.toggle("hidden")
     taskForm.classList.toggle("hidden");
+    submitButton.innerText = "Update?"
+
+    currentTask.id = buttonEl.parentElement.id;
+
 
     const dataArrIndex = taskData.findIndex((e) =>
         e.id === buttonEl.parentElement.id
@@ -111,8 +127,10 @@ const editTask = (buttonEl) => {
     titleInput.value = taskData[dataArrIndex].title;
     dateInput.value = taskData[dataArrIndex].date;
     descriptionInput.value = taskData[dataArrIndex].description;
-    console.log(`i am looking for an object: ${taskData[dataArrIndex].title}`)
     
+
+
+
 
 
 
