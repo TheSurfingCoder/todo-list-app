@@ -17,6 +17,15 @@ openTaskFormBtn.addEventListener("click", () => {
 })
 
 const addOrUdpateTask = () => {
+    /*This function will first check if there's any value inside
+    the title input. if not it will alert. it then creates an object
+    filled with the all the input values and then saves it into an object
+     it will then insert the object into the array that contains
+     all the objects. Finally it inserts into localstorage and 
+     uses stringify to turn the entire object into a string
+     
+     TL/DR: it creates an object with all input values and inserts into main
+     array and sends to local storage*/
     if (!titleInput.value.trim()) {
         alert("Please Provide A Title");
         return;
@@ -79,4 +88,32 @@ const reset = () => {
 
 if (taskData.length) {
     updateTaskContainer();
+}
+
+const deleteTask = (buttonEl) => {
+    const dataArrIndex = taskData.findIndex((e) =>
+        e.id === buttonEl.parentElement.id
+    )
+    buttonEl.parentElement.remove(); //removes the div hthml
+    taskData.splice(dataArrIndex, 1); //removes the piece from the index
+    localStorage.setItem("data", JSON.stringify(taskData));
+
+
+};
+
+const editTask = (buttonEl) => {
+    tasksContainer.classList.toggle("hidden")
+    taskForm.classList.toggle("hidden");
+
+    const dataArrIndex = taskData.findIndex((e) =>
+        e.id === buttonEl.parentElement.id
+    );
+    titleInput.value = taskData[dataArrIndex].title;
+    dateInput.value = taskData[dataArrIndex].date;
+    descriptionInput.value = taskData[dataArrIndex].description;
+    console.log(`i am looking for an object: ${taskData[dataArrIndex].title}`)
+    
+
+
+
 }
