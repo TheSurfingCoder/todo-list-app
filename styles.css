@@ -1,6 +1,31 @@
-body {
-    background-color: blue;
+:root {
+    --white: #fff;
+    --light-grey: #f5f6f7;
+    --dark-grey: #0a0a23;
+    --yellow: #f1be32;
+    --golden-yellow: #feac32;
+  }
+
+
+  body {
+    background-color: var(--dark-grey);
+  }
+
+
+
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+h1 {
+    color: black;
+    margin: 20px 0 40px 0;
+  }
 
 
 .task-form {
@@ -13,9 +38,9 @@ body {
 
 main {
     display: flex;
-    /* This is a comment in CSS */
-    background-color: aliceblue;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
 }
 
@@ -29,6 +54,7 @@ main {
 .todo-app {
     display: flex;
     border: 5px solid yellow;
+    background-color: white;
     flex-direction: column;
     width: 400px;
     align-items: center;
@@ -38,7 +64,7 @@ main {
 .btn {
     cursor: pointer;
     width: 100px;
-    color: var(--dark-grey);
+    margin: 10px;
     color: var(--dark-grey);
     background-color: var(--golden-yellow);
     background-image: linear-gradient(#fecc4c, #ffac33);

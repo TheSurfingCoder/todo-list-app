@@ -5,6 +5,7 @@ const titleInput = document.getElementById("title-input");
 const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
 const tasksContainer = document.getElementById("tasks-container");
+const closeTaskFormBtn = document.getElementById("close-task-form-btn");
 
 
 let taskData = JSON.parse(localStorage.getItem("data")) || [];
@@ -14,6 +15,7 @@ openTaskFormBtn.addEventListener("click", () => {
     console.log("i'm pressing open button");
     taskForm.classList.toggle("hidden");
     tasksContainer.classList.toggle("hidden");
+    openTaskFormBtn.classList.add("hidden");
 })
 
 const addOrUdpateTask = () => {
@@ -55,6 +57,7 @@ const addOrUdpateTask = () => {
 
     localStorage.setItem("data", JSON.stringify(taskData));
     updateTaskContainer();
+    openTaskFormBtn.classList.toggle("hidden");
     reset();
 
 }
@@ -66,6 +69,13 @@ taskForm.addEventListener("submit", function (event) {
 
 
 
+})
+
+closeTaskFormBtn.addEventListener("click", ()=>{
+    console.log("close button clicked");
+    taskForm.classList.toggle("hidden");
+    tasksContainer.classList.toggle("hidden");
+    openTaskFormBtn.classList.toggle("hidden");
 })
 
 const updateTaskContainer = () => {
@@ -87,6 +97,8 @@ const updateTaskContainer = () => {
     tasksContainer.classList.toggle("hidden");
 
 }
+
+
 
 
 const reset = () => {
@@ -127,11 +139,7 @@ const editTask = (buttonEl) => {
     titleInput.value = taskData[dataArrIndex].title;
     dateInput.value = taskData[dataArrIndex].date;
     descriptionInput.value = taskData[dataArrIndex].description;
-    
-
-
-
-
+    openTaskFormBtn.classList.toggle("hidden")
 
 
 }
