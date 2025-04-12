@@ -12,14 +12,14 @@
     <main>
         <div class="todo-app">
             <h1>To Do App</h1>
-            <btn id="add-button" class="btn" type="submit">button</btn>
-            <form id="taskForm">
+            <btn id="open-button" class="btn" type="submit">Open Button</btn>
+            <form id="taskForm" class="task-form hidden">
                 <!-- going to break this form into three parts: 1) Header for the close button
 2) body for the actual inputs 3) just a generic footer-->
 
                 <!-- this is head of task form-->
                 <div id="task-form-header">
-                    <button id="close-task-form-btn" class="close-task-form-btn" type="button" aria-label="close">
+                    <button id="close-task-form-btn" class="close-task-form-btn btn" type="button" aria-label="close">
                         <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px"
                             height="48px">
                             <path fill="#F44336" d="M21.5 4.5H26.501V43.5H21.5z" transform="rotate(45.001 24 24)" />
@@ -27,7 +27,7 @@
                         </svg>
                     </button>
                 </div>
-                <!-- this is body of task form-->                
+                <!-- this is body of task form-->
                 <div id="task-form-body">
                     <label class="task-form-label" for="title-input">Title</label>
                     <input required type="text" class="form-control" id="title-input" value="" />
@@ -37,11 +37,16 @@
                     <textarea class="form-control" id="description-input" cols="30" rows="5"></textarea>
 
                 </div>
-                <!-- this is footer of task form--> 
+                <!-- this is footer of task form-->
                 <div id="task-form-footer">
-                    <h2>i'm the footer</h2>
+                    <button id="add-or-update-task-btn" class="btn large-btn" type="submit">
+                        Add Task
+                    </button>
                 </div>
             </form>
+            <div id="tasks-container" class="tasks-container hidden"> 
+
+            </div>
 
 
         </div>

@@ -3,22 +3,24 @@ body {
 }
 
 
-#taskForm{
+.task-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     border: 2px solid black;
-}
-main {
-    display: flex; /* This is a comment in CSS */
-    background-color: aliceblue;
-    justify-content: center;
-    
-    
-    
+    align-items: center;
 }
 
-.header, .footer {
+main {
+    display: flex;
+    /* This is a comment in CSS */
+    background-color: aliceblue;
+    justify-content: center;
+
+}
+
+.header,
+.footer {
     background-color: aqua;
     display: flex;
     justify-content: center;
@@ -42,11 +44,22 @@ main {
     background-image: linear-gradient(#fecc4c, #ffac33);
     border-color: var(--golden-yellow);
     border-width: 3px;
+    text-align: center;
 }
 
 .task-form-label,
 #title-input,
 #date-input,
 #description-input {
-  display: block;
+    display: block;
 }
+
+#tasks-container {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+.hidden {
+    display: none;
+}
+
